@@ -4,9 +4,7 @@
 #include <QChar>
 #include <QDialog>
 #include <QMap>
-#include <QPointer>
 #include <QString>
-#include <QVector>
 
 #include "cryptogramui.h"
 
@@ -30,8 +28,6 @@ class Cryptogram : public QDialog
   void guessCaesar();
   void changePlaintext();
  private:
-  QVector< QPointer<QLabel> > LabelVect;
-  QVector< QPointer<QLineEdit> > EditVect;
   QString Alph;
   QString oldPlaintext;
   bool inChangePlaintext;

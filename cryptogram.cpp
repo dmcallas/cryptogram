@@ -23,43 +23,9 @@ Cryptogram::Cryptogram(){
   connect(ui.pushButtonVigenere,SIGNAL(clicked()),this,SLOT(computeVigenere()));
   connect(ui.pushButtonGuess,SIGNAL(clicked()),this,SLOT(guessCaesar()));
   connect(ui.plainTextEditPT,SIGNAL(cursorPositionChanged()),this,SLOT(changePlaintext()));
-  i=0;
-  EditVect.resize(26);LabelVect.resize(26);
-  for(i=0;i<26;i++){
-    EditVect[i]=ui.keyEdit[i];
-    LabelVect[i]=ui.keyLabel[i];    
-  }
-  /*
-  EditVect[i]=ui.lineEdit_A;LabelVect[i++]=ui.label_A;
-  EditVect[i]=ui.lineEdit_B;LabelVect[i++]=ui.label_B;
-  EditVect[i]=ui.lineEdit_C;LabelVect[i++]=ui.label_C;
-  EditVect[i]=ui.lineEdit_D;LabelVect[i++]=ui.label_D;
-  EditVect[i]=ui.lineEdit_E;LabelVect[i++]=ui.label_E;
-  EditVect[i]=ui.lineEdit_F;LabelVect[i++]=ui.label_F;
-  EditVect[i]=ui.lineEdit_G;LabelVect[i++]=ui.label_G;
-  EditVect[i]=ui.lineEdit_H;LabelVect[i++]=ui.label_H;
-  EditVect[i]=ui.lineEdit_I;LabelVect[i++]=ui.label_I;
-  EditVect[i]=ui.lineEdit_J;LabelVect[i++]=ui.label_J;
-  EditVect[i]=ui.lineEdit_K;LabelVect[i++]=ui.label_K;
-  EditVect[i]=ui.lineEdit_L;LabelVect[i++]=ui.label_L;
-  EditVect[i]=ui.lineEdit_M;LabelVect[i++]=ui.label_M;
-  EditVect[i]=ui.lineEdit_N;LabelVect[i++]=ui.label_N;
-  EditVect[i]=ui.lineEdit_O;LabelVect[i++]=ui.label_O;
-  EditVect[i]=ui.lineEdit_P;LabelVect[i++]=ui.label_P;
-  EditVect[i]=ui.lineEdit_Q;LabelVect[i++]=ui.label_Q;
-  EditVect[i]=ui.lineEdit_R;LabelVect[i++]=ui.label_R;
-  EditVect[i]=ui.lineEdit_S;LabelVect[i++]=ui.label_S;
-  EditVect[i]=ui.lineEdit_T;LabelVect[i++]=ui.label_T;
-  EditVect[i]=ui.lineEdit_U;LabelVect[i++]=ui.label_U;
-  EditVect[i]=ui.lineEdit_V;LabelVect[i++]=ui.label_V;
-  EditVect[i]=ui.lineEdit_W;LabelVect[i++]=ui.label_W;
-  EditVect[i]=ui.lineEdit_X;LabelVect[i++]=ui.label_X;
-  EditVect[i]=ui.lineEdit_Y;LabelVect[i++]=ui.label_Y;
-  EditVect[i]=ui.lineEdit_Z;LabelVect[i++]=ui.label_Z;
-  */
   computeFreq();
   for(i=0;i<25;i++){
-    connect(EditVect[i],SIGNAL(textEdited(QString)),this,SLOT(changeKey(QString)));
+    connect(ui.keyEdit[i],SIGNAL(textEdited(QString)),this,SLOT(changeKey(QString)));
   }
   for(i=0;i<25;i++){
     key[Alph[i]]='_';
@@ -72,7 +38,7 @@ void Cryptogram::changeKey(QString s)
   QString templetter;
   int temp=0;
   for(int i=0;i<26;i++){
-    templetter=EditVect[i]->text();
+    templetter=ui.keyEdit[i]->text();
     tempkey[Alph.at(i)]=templetter.at(0);
   }
   temp=0;
@@ -162,9 +128,9 @@ void Cryptogram::updatedKey()
   }
   for(int i=0;i<26;i++){
     if(key[Alph.at(i)]=='_'||key[Alph.at(i)]==' ')
-      EditVect[i]->setText("");
+      ui.keyEdit[i]->setText("");
     else
-      EditVect[i]->setText(key[Alph.at(i)]);
+      ui.keyEdit[i]->setText(key[Alph.at(i)]);
   }
   for(int i=0;i<26;i++){
     LabelText.append(ikey[Alph.at(i)]);
@@ -232,7 +198,7 @@ void Cryptogram::computeFreq(){
     LabelText[i].prepend(Alph.at(i));
   }
   for(int i=0;i<26;i++){
-    LabelVect[i]->setText(LabelText[i]);
+    ui.keyLabel[i]->setText(LabelText[i]);
   }
 }
 
@@ -282,7 +248,7 @@ void Cryptogram::guessCaesar()
 {
   computeFreq();
   double conv[26],f,e;
-  // Expected taken from Military Cryptanalytics, which cites Hitt.
+  // Expected valued taken from Military Cryptanalytics, which cites Hitt.
   int expected[26]={778,141,296,402,1277,197,174,595,667,51,74,372,288,686,807,233,8,651,622,855,308,112,176,27,196,17};
   int max;  
   for(int i=0;i<26;i++){
@@ -298,7 +264,10 @@ void Cryptogram::guessCaesar()
     if(conv[i]>conv[max])
       max=i;
   }
-  ui.spinBox->setValue((max+1)%26);
+  ui.spinBox->setValue((max+1)%26); //Jog the box so that the
+				    //plaintext will update even if
+				    //the spinbox value does not
+				    //change.
   ui.spinBox->setValue(max);
 }
 
@@ -319,7 +288,7 @@ void Cryptogram::changePlaintext()
   pos--;
   if(pos<0){pos=0;dec=true;}
   if(ct.at(pos).isLetter()){
-    EditVect[ct.at(pos).toUpper().toAscii()-'A']->setText(pt.at(pos));
+    ui.keyEdit[ct.at(pos).toUpper().toAscii()-'A']->setText(pt.at(pos));
     key[ct.at(pos).toUpper()]=pt.at(pos);
     updatedKey();
   }
