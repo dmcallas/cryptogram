@@ -2,20 +2,20 @@
 #define CRYPTOGRAM_UI_H
 
 #include <QtCore/QVariant>
-#include <QtGui/QAction>
-#include <QtGui/QApplication>
-#include <QtGui/QButtonGroup>
-#include <QtGui/QCheckBox>
-#include <QtGui/QDialog>
-#include <QtGui/QGridLayout>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QHeaderView>
-#include <QtGui/QLabel>
-#include <QtGui/QLineEdit>
-#include <QtGui/QPlainTextEdit>
-#include <QtGui/QPushButton>
-#include <QtGui/QSpinBox>
-#include <QtGui/QVBoxLayout>
+#include <QAction>
+#include <QApplication>
+#include <QButtonGroup>
+#include <QCheckBox>
+#include <QDialog>
+#include <QGridLayout>
+#include <QHBoxLayout>
+#include <QHeaderView>
+#include <QLabel>
+#include <QLineEdit>
+#include <QPlainTextEdit>
+#include <QPushButton>
+#include <QSpinBox>
+#include <QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
 
@@ -242,22 +242,22 @@ public:
 
     void retranslateUi(QDialog *Cryptogram)
     {
-        Cryptogram->setWindowTitle(QApplication::translate("Cryptogram", "Cryptogram", 0, QApplication::UnicodeUTF8));
+        Cryptogram->setWindowTitle(QApplication::translate("Cryptogram", "Cryptogram", 0));
 	for(int i=0;i<26;i++){
-	  keyLabel[i]->setText(QApplication::translate("Cryptogram", "A (00)", 0, QApplication::UnicodeUTF8));
+	  keyLabel[i]->setText(QApplication::translate("Cryptogram", "A (00)", 0));
 	}
         label_ptcode->setText(QApplication::translate("Cryptogram", "PLAIN: A B C D E F G H I J K L M N O P Q R S T U V W X Y Z\n"
-" CODE: A B C D E F G H I J K L M N O P Q R S T U V W X Y Z", 0, QApplication::UnicodeUTF8));
-        pushButtonFreq->setText(QApplication::translate("Cryptogram", "Compute Frequencies", 0, QApplication::UnicodeUTF8));
-        pushButtonClearLetters->setText(QApplication::translate("Cryptogram", "Clear Letters", 0, QApplication::UnicodeUTF8));
-        pushButtonClearToLower->setText(QApplication::translate("Cryptogram", "Clear To Lowercase", 0, QApplication::UnicodeUTF8));
-        pushButtonKeyCT->setText(QApplication::translate("Cryptogram", "Key (CT):", 0, QApplication::UnicodeUTF8));
-        pushButtonKeyPT->setText(QApplication::translate("Cryptogram", "Key (PT):", 0, QApplication::UnicodeUTF8));
-        pushButtonVigenere->setText(QApplication::translate("Cryptogram", "Vigenere Key:", 0, QApplication::UnicodeUTF8));
-        checkBoxAutoKey->setText(QApplication::translate("Cryptogram", "Auto Key", 0, QApplication::UnicodeUTF8));
-        checkBoxBeaufort->setText(QApplication::translate("Cryptogram", "Beaufort", 0, QApplication::UnicodeUTF8));
-        labelCaesar->setText(QApplication::translate("Cryptogram", "Caesar:", 0, QApplication::UnicodeUTF8));
-        pushButtonGuess->setText(QApplication::translate("Cryptogram", "Guess", 0, QApplication::UnicodeUTF8));
+" CODE: A B C D E F G H I J K L M N O P Q R S T U V W X Y Z", 0));
+        pushButtonFreq->setText(QApplication::translate("Cryptogram", "Compute Frequencies", 0));
+        pushButtonClearLetters->setText(QApplication::translate("Cryptogram", "Clear Letters", 0));
+        pushButtonClearToLower->setText(QApplication::translate("Cryptogram", "Clear To Lowercase", 0));
+        pushButtonKeyCT->setText(QApplication::translate("Cryptogram", "Key (CT):", 0));
+        pushButtonKeyPT->setText(QApplication::translate("Cryptogram", "Key (PT):", 0));
+        pushButtonVigenere->setText(QApplication::translate("Cryptogram", "Vigenere Key:", 0));
+        checkBoxAutoKey->setText(QApplication::translate("Cryptogram", "Auto Key", 0));
+        checkBoxBeaufort->setText(QApplication::translate("Cryptogram", "Beaufort", 0));
+        labelCaesar->setText(QApplication::translate("Cryptogram", "Caesar:", 0));
+        pushButtonGuess->setText(QApplication::translate("Cryptogram", "Guess", 0));
     } // retranslateUi
 
 };

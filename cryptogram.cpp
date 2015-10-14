@@ -187,7 +187,7 @@ void Cryptogram::computeFreq(){
     freq[i]=0;
   for(QString::const_iterator i=Ciphertext.begin();i!=Ciphertext.end();++i){
     if(i->isLetter()){
-      index=(i->toAscii())-'A';
+      index=(i->unicode())-'A';
       freq[index]++;
     }
   }
@@ -228,8 +228,8 @@ void Cryptogram::computeVigenere()
   }
   for(int i=0;i<Ciphertext.length();i++){
     if(Ciphertext.at(i).isLetter()){
-      c=Ciphertext.at(i).toAscii()-'A';
-      k=vKey.at(i).toAscii()-'A';
+      c=Ciphertext.at(i).unicode()-'A';
+      k=vKey.at(i).unicode()-'A';
       if(beaufort)
 	r=c+k+26;
       else
@@ -288,7 +288,7 @@ void Cryptogram::changePlaintext()
   pos--;
   if(pos<0){pos=0;dec=true;}
   if(ct.at(pos).isLetter()){
-    ui.keyEdit[ct.at(pos).toUpper().toAscii()-'A']->setText(pt.at(pos));
+    ui.keyEdit[ct.at(pos).toUpper().unicode()-'A']->setText(pt.at(pos));
     key[ct.at(pos).toUpper()]=pt.at(pos);
     updatedKey();
   }
