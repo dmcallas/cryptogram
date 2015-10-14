@@ -1,11 +1,10 @@
 To compile the program, you will need to have the Qt development
-libraries installed. If you don't wish to compile the program, there
-are binaries on my webpage.
+libraries installed.
 
 
 COMPILING FOR LINUX
 ==================================================
-To compile on Linux, run qmake-qt4 followed by make.
+To compile on Linux, run qmake-qt5 followed by make.
 
 COMPILING FOR WINDOWS
 ==================================================
