@@ -1,0 +1,10 @@
+# Emacs files:
+*~
+
+# Qt Generated files:
+moc_*
+Makefile
+
+# Compiled files:
+*.o
+cryptogram
