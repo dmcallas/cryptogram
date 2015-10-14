@@ -21,8 +21,28 @@ To compile on Linux, run `qmake-qt5` followed by `make`.
 
 ### Compiling For Windows
 
-From a Linux system, you can use Mingw32 to cross-compile. I have done
-this succesfully on Fedora 14. Your mileage may vary.
+#### Cross-compiling
+
+To build a Windows executable using Fedora 21:
+
+1. Install the following packages (Change 64 to 32 if you need to do
+32-bit builds):
+  * `mingw64-qt5-qmake`
+  * `mingw64-qt5-qtbase`
+  * `mingw64-gcc-c++`
+  * `mingw64-qt5-qtbase-static` (if you want to statically link Qt
+    libraries)
+2. Run `x86_64-w64-mingw32-qmake-qt5`
+3. Run `make`
+
+The executable file will be in the `release` directory.
+
+To create a statically linked build, add `CONFIG += static` to the
+`cryptogram.pro` file and build as above (if you have already built it
+you may need to do a `make clean` and possibly delete the
+`Makefile`s).
+
+#### Compiling on Windows
 
 I have not compiled on Windows itself. If you are on a Windows system,
 you should look at the Qt documentation for Windows compilation. You
@@ -30,8 +50,10 @@ will need to run `qmake`, followed by your system's equivalent of
 `make`, which may be either `make` or `nmake`. You should be able to
 use Mingw32 or VC++ to compile.
 
-Note that regardless of the compilation method, you will need to have
-Qt libraries installed on the Windows system the program is run on.
+#### Runtime Libraries
+
+Note that if you do not make a static build, you will need to have Qt
+libraries installed on the Windows system the program is run on.
 
 ### Comiling For Mac
 
