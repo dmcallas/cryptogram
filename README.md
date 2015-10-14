@@ -31,7 +31,7 @@ use Mingw32 or VC++ to compile.
 Note that regardless of the compilation method, you will need to have
 Qt libraries installed on the Windows system the program is run on.
 
-## Comiling For Mac
+### Comiling For Mac
 
 I have no experience with Apple products, but if you try compiling for
 Mac and get any errors, send me the error log and I will try to
