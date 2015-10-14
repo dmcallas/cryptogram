@@ -6,6 +6,7 @@ TEMPLATE = app
 TARGET = cryptogram
 
 # Input
+QT += widgets printsupport
 SOURCES += main.cpp cryptogram.cpp
 HEADERS += cryptogram.h cryptogramui.h
 
