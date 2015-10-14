@@ -3,6 +3,8 @@ Cryptogram
 
 This is a small program to help you solve cryptograms.
 
+![Screenshot](img/cryptogram_screenshot.png)
+
 _Disclaimer: I wrote this several years ago. The only updates I have
 made in the past few years have been to make it build. Do not expect
 good code. Some of the advanced features may not work either
