@@ -38,3 +38,6 @@ Mac and get any errors, send me the error log and I will try to
 correct them. The process should be similar to the other versions. You
 should be able to run `qmake` and your system's version of `make` and
 get an executable.
+
+## License
+This program is licensed under the terms of the GNU General Public License, Version 3. See the [LICENSE](LICENSE) file for more details.
